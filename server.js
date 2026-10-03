@@ -1,12 +1,15 @@
 const WebSocket = require("ws");
 
+const PORT = process.env.PORT || 8080;
+
 const wss = new WebSocket.Server({
-       port: process.env.PORT || 8080
+    port: PORT,
+    host: "0.0.0.0"
 });
 
 const clients = new Map();
 
-console.log("SnapX signaling server started on port 8080");
+console.log(`SnapX signaling server started on port ${PORT}`);
 
 wss.on("connection", (ws) => {
 
